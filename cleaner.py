@@ -1,27 +1,15 @@
+# cleaner.py
+# Author: Spencer Ye
+# Last Edited: August 5th, 2024
+# Version: 0.1
 import pandas as pd
 
 # Read CSV file into pandas DataFrame
 df = pd.read_csv('DATA/Scores & Information.csv')
 
-# df.drop(df[].index, inplace=True)
-# df.drop(df[].index, inplace=True)
-
-print(df.head())
-
+# Create filter array and filter the dataframe
 filter = (df['School Name'].str.contains("Continuation") == False) 
-print(filter.head())
 filtered_df = df[filter]
-print(filtered_df.head())
 
-# df = df[df["School Name"].str.contains("Continuation")]
-
-# len(df["School Name"]) < 50
-
-# df = df.drop(df[(True) & (True)].index)
-
-# df[df['School Name'].index("continuation")]
-
-# Display the DataFrame (table)
-print(len(filtered_df))
-
+# Write the filtered dataframe outwards
 filtered_df.to_csv("out.csv", sep=',', encoding='utf-8', index=False, header=True)
