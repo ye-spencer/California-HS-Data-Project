@@ -1,9 +1,10 @@
 SELECT
-  `School Code`,
-  `County Code`,
-  `District Code`,
-  `Students Tested`,
-  CAST(10 * `Percentage Standard Exceeded` + 7 * `Percentage Standard Met` + 2 * `Percentage Standard Nearly Met` + 0.5 * `Percentage Standard Not Met` AS FLOAT64) AS score
+  testingData.`School Code`,
+  testingData.`County Code`,
+  testingData.`District Code`,
+  testingData.`Students Tested`,
+  CAST(10 * `Percentage Standard Exceeded` + 7 * `Percentage Standard Met` + 2 * `Percentage Standard Nearly Met` + 0.5 * `Percentage Standard Not Met` AS FLOAT64) AS score,
+  schoolData.`School Name`
 FROM ( -- Subquery to combine school's various scores across test versions
 SELECT 
   `School Code`, 
@@ -20,9 +21,8 @@ WHERE grade = 11 -- Only get the scores for individual schools, no aggregated sc
   AND (NOT `School Code` = 0)
   AND (NOT `Students Tested` = "*")
   AND (NOT `Percentage Standard Exceeded` = "*")
-GROUP BY `School Code`, `County Code`, `District Code`;
-) subquery
+GROUP BY `School Code`, `County Code`, `District Code`
+) testingData, `california-hs-project.Main.School Data From Testing` AS schoolData
+WHERE schoolData.`School Code` = testingData.`School Code`;
 
 -- Need to run a loop to see which power of n (school size) we should divide the schools by to minimize school size as a factor
-  
-
