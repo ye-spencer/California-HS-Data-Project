@@ -1,3 +1,10 @@
+SELECT
+  `School Code`,
+  `County Code`,
+  `District Code`,
+  `Students Tested`,
+  (10 * `Percentage Standard Exceeded` + 7 * `Percentage Standard Met` + 2 * `Percentage Standard Nearly Met` + 0.5 * `Percentage Standard Not Met`) AS score
+FROM (
 SELECT 
   `School Code`, 
   `County Code`,
@@ -14,3 +21,6 @@ WHERE grade = 11
   AND (NOT `Students Tested` = "*")
   AND (NOT `Percentage Standard Exceeded` = "*")
 GROUP BY `School Code`, `County Code`, `District Code`;
+) subquery
+  
+
