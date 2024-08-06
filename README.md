@@ -1,7 +1,16 @@
-general idea
+# California High School Ranking
 
-try to find a measurement for what makes a school good, then try to see what factors can lead to the best change in a school
+The premise of this project is to use a Random Forest machine learning model to determine what factors lead to high school success as measured by standarized test scores
 
-use SQL and databases to hold and organize and clean the data, using data analytics skills
+## Procedure
 
-? use tensor learn or some otheer AI to do the actual learning aspect
+I used SK-Learn's RandomForestRegressor and took data from cde.ca.gov
+
+## Results
+
+With whatever data you have, this program can print a bar graph of the most important features:
+
+
+
+
+I will be running and displaying my own below once I have access to a machine that will take less than 14 hrs to run
