@@ -11,12 +11,10 @@ from matplotlib import pyplot as plt
 
 
 # Load and split the data
-data = pd.read_csv('DATA/feature_set_one.csv')
+data = pd.read_csv('DATA/feature_set_two.csv')
 
 # Process data
 X = data.drop('Score', axis=1)
-X['Type_Num'] = np.where(X['Type'] == "Regular", 1, 0)
-X = X.drop('Type', axis=1)
 Y = data['Score']
 
 X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.15)
