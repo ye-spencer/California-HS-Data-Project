@@ -11,17 +11,19 @@ from matplotlib import pyplot as plt
 
 
 # Load and split the data
-data = pd.read_csv('DATA/Scores & Information.csv')
+data = pd.read_csv('DATA/feature_set_one.csv')
 
-X = data.drop('score', axis=1)
-X = X.drop('School Name', axis=1)
-Y = data['score']
+# Process data
+X = data.drop('Score', axis=1)
+X['Type_Num'] = np.where(X['Type'] == "Regular", 1, 0)
+X = X.drop('Type', axis=1)
+Y = data['Score']
 
 X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.15)
 
 
 # Create a random forest classifier and find the best hyperparameters
-param_dist = {'n_estimators': randint(50,500), 'max_depth': randint(1,100)}
+param_dist = {'n_estimators': randint(50,500), 'max_depth': randint(1,100)} # Possibly run multiple times with iterators
 
 rf = RandomForestRegressor()
 rand_search = RandomizedSearchCV(rf, param_distributions = param_dist, n_iter=5, cv=5)
