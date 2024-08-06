@@ -10,6 +10,7 @@ I used SK-Learn's RandomForestRegressor and took data from cde.ca.gov
 
 With whatever data you have, this program can print a bar graph of the most important features:
 
+![image](https://github.com/user-attachments/assets/2fc0e3dd-52ee-4a43-81c2-bec29427d1c2)
 
 
 
