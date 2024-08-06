@@ -1,5 +1,5 @@
 SELECT 
-  (MOD(CAST(CDS_CODE AS INT64), 1000000)) AS `School Code`,
+  (MOD(CAST(CDS_CODE AS INT64), 10000000)) AS `School Code`,
   HISPANIC / TOTAL AS `percent hispanic`,
   AM_IND / TOTAL AS `percent native american`,
   ASIAN / TOTAL  AS `percent asian`,
